@@ -3,6 +3,11 @@ export interface IProduct {
   name: string;
   price: number;
   category: string;
-  categoryId: number;
+  categoryId: string;
   creationDate: string;
+}
+
+export interface IProductFilters{
+  categoryId:string,
+  searchKey:string
 }

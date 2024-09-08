@@ -1,1 +1,87 @@
-<p>product-list works!</p>
+<div class="product-list-wrapper container my-3">
+  <header class="d-flex align-items-center justify-content-between my-2">
+    <h4 class="title text-primary">Our product List</h4>
+    <button class="btn btn-primary" [routerLink]="['/add']">
+      Add New Product
+    </button>
+  </header>
+  <div class="filters my-3">
+    <div class="row align-items-center justify-content-between">
+      <div class="col-4">
+        <input
+          (keyup)="onSearch($event)"
+          type="text"
+          class="form-control"
+          id="product_name"
+          placeholder="Search by product Name "
+        />
+      </div>
+
+      <div class="col-4">
+        <select
+          (change)="onFilterByCategory($event)"
+          id="product_Category"
+          class="form-select"
+          aria-label="Default select example"
+          [(ngModel)]="selectedCategory"
+        >
+          <option [value]="''" selected>
+            Open this select menu
+          </option>
+          @for (category of categoriesList; track category.id) {
+          <option [value]="category.id">{{ category.name }}</option>
+
+          }
+        </select>
+        <div (click)="onClearFilter()" class="clear d-flex justify-content-end my-2">
+            <span class="text-warning">Clear</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  @if (!!(productManagementService?.productsList$ |async)?.length) {
+  <table class="table mt-3">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Product Name</th>
+        <th scope="col">Product Price</th>
+        <th scope="col">Product Category</th>
+        <th scope="col">Product Create Date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (product of (productManagementService.productsList$ |async) ; track
+      product.id ; let index = $index) {
+      <tr>
+        <th scope="row">{{ index + 1 }}</th>
+        <td>{{ product.name }}</td>
+        <td>{{ product.price | currency }}</td>
+        <td>{{ product.category }}</td>
+        <td>{{ product.creationDate | date }}</td>
+        <td>
+          <div
+            class="actions d-flex align-items-center justify-content-between"
+          >
+            <button
+              class="btn btn-warning m-1"
+              [routerLink]="['/edit/' + product.id]"
+            >
+              Edit
+            </button>
+            <button class="btn btn-danger" (click)="onDelete(product, index)">
+              Delete
+            </button>
+          </div>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+  } @else {
+  <div class="no-data d-flex align-items-center justify-content-center my-5">
+    <h4 class="text-muted"> No Products are Available</h4>
+  </div>
+  }
+</div>

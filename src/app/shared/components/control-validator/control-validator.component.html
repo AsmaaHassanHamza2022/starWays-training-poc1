@@ -1,0 +1,6 @@
+@if (control?.invalid && (control?.dirty || control?.touched) ){ @for (error of
+errorMessages; track error) {
+<div class="alert alert-danger py-2">
+  {{ error }}
+</div>
+} }
