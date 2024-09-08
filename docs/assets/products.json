@@ -1,0 +1,51 @@
+[
+    {
+      "id": "cnlba0cunm0tk2flq",
+      "name": "iPhone 14",
+      "price": 999.99,
+      "category": "Electronics",
+      "categoryId": "1",
+      "creationDate": "2024-08-01"
+    },
+    {
+      "id": "cnlba0cunm0tk2fla",
+      "name": "Samsung Galaxy S23",
+      "price": 899.99,
+      "category": "Electronics",
+      "categoryId": "1",
+      "creationDate": "2024-08-03"
+    },
+    {
+      "id": "cnlba0cunm0tk2flc",
+      "name": "Men's Leather Jacket",
+      "price": 149.99,
+      "category": "Clothing",
+      "categoryId": "2",
+      "creationDate": "2024-08-10"
+    },
+    {
+      "id": "cnlba0cunm0tk2fll",
+      "name": "Women's Summer Dress",
+      "price": 79.99,
+      "category": "Clothing",
+      "categoryId": "2",
+      "creationDate": "2024-08-12"
+    },
+    {
+      "id": "cnlba0cunm0tk2flm",
+      "name": "Samsung Refrigerator",
+      "price": 1299.99,
+      "category": "Home Appliances",
+      "categoryId": "3",
+      "creationDate": "2024-08-05"
+    },
+    {
+      "id": "6",
+      "name": "LG Washing Machine",
+      "price": 899.99,
+      "category": "Home Appliances",
+      "categoryId": "3",
+      "creationDate": "2024-08-07"
+    }
+  ]
+  
