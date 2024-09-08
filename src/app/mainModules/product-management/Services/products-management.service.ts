@@ -39,7 +39,7 @@ export class ProductsManagementService {
       );
   }
   getProducts(): Observable<IProduct[]> {
-    if (this.productsList.length) {
+    if (this.productsList?.length) {
       this.displayedProductsList.next(this.productsList);
       return of();
     }
@@ -145,6 +145,6 @@ export class ProductsManagementService {
   }
 
   get productsList() {
-    return this.productsListSource.getValue();
+    return this.productsListSource.getValue()??[];
   }
 }
