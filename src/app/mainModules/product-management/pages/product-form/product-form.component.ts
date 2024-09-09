@@ -47,7 +47,7 @@ export default class ProductFormComponent implements OnInit {
   initForm() {
     this.form = this.fb.group({
       name: ['', [Validators.required, Validators.maxLength(30)]],
-      price: ['', [Validators.required]],
+      price: ['', [Validators.required,Validators.min(1)]],
       categoryId: [null, [Validators.required]],
     });
   }
@@ -105,6 +105,8 @@ export default class ProductFormComponent implements OnInit {
       next: (res) => {
         if (res) {
           this.router.navigate(['/']);
+          this.form.reset();
+          this.productManagementService.resetFilter();
         }
       },
     });
