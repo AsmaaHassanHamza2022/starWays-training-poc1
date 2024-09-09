@@ -1,23 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ProductListComponent } from './pages/product-list/product-list.component';
-import { ProductFormComponent } from './pages/product-form/product-form.component';
-import { FormModes } from './utilities/enums/enums';
 
 const routes: Routes = [
   {
     path: '',
-    component: ProductListComponent,
+    loadComponent:()=>import('./pages/product-list/product-list.component'),
     pathMatch: 'full',
   },
   {
     path: 'add',
-    component: ProductFormComponent,
+    loadComponent:()=>import('./pages/product-form/product-form.component')
     
   },
   {
     path: 'edit/:id',
-    component: ProductFormComponent,
+    loadComponent:()=>import('./pages/product-form/product-form.component')
     
   },
 ];
