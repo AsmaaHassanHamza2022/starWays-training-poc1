@@ -1,7 +1,18 @@
+:root {
+  --bs-primary: #007bff; // Default Bootstrap primary color
+}
 // Variable overrides first
-$primary: #900;
+// $primary: #900;
 $enable-shadows: true;
-$prefix: "mo-";
+// $prefix: "mo-";
 
 // Then import Bootstrap
 @import "../node_modules/bootstrap/scss/bootstrap";
+.btn-primary,
+.btn-primary:hover {
+  background-color: var(--bs-primary);
+  border-color: var(--bs-primary);
+}
+.text-primary {
+  color: var(--bs-primary) !important;
+}
