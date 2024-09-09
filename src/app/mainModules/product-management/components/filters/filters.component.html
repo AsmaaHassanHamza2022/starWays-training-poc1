@@ -1,0 +1,33 @@
+<div class="row align-items-center justify-content-between">
+  <div class="col-4">
+    <input
+      (keyup)="onSearch($event)"
+      type="text"
+      class="form-control"
+      id="product_name"
+      placeholder="Search by product Name "
+    />
+  </div>
+
+  <div class="col-4">
+    <select
+      (change)="onFilterByCategory($event)"
+      id="product_Category"
+      class="form-select"
+      aria-label="Default select example"
+      [ngModel]="selectedCategory()"
+    >
+      <option [value]="''" selected>Open this select menu</option>
+      @for (category of categoriesList(); track category.id) {
+      <option [value]="category.id">{{ category.name }}</option>
+
+      }
+    </select>
+    <div
+      (click)="onClearFilter()"
+      class="clear d-flex justify-content-end my-2"
+    >
+      <span class="text-warning">Clear</span>
+    </div>
+  </div>
+</div>

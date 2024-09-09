@@ -1,17 +1,32 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { ProductsManagementService } from '../../Services/products-management.service';
 import { ICategory } from '../../utilities/models/category';
 import { IProduct } from '../../utilities/models/product';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormModes } from '../../utilities/enums/enums';
+import { CommonModule } from '@angular/common';
+import { ControlValidatorComponent } from '../../../../shared/components/control-validator/control-validator.component';
 
 @Component({
   selector: 'app-product-form',
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    ControlValidatorComponent,
+  ],
   templateUrl: './product-form.component.html',
   styleUrl: './product-form.component.scss',
 })
-export class ProductFormComponent implements OnInit {
+export default class ProductFormComponent implements OnInit {
   categoriesList: ICategory[] = [];
   public form!: FormGroup;
   formMode: FormModes = FormModes.Add;
@@ -35,6 +50,10 @@ export class ProductFormComponent implements OnInit {
       price: ['', [Validators.required]],
       categoryId: [null, [Validators.required]],
     });
+  }
+
+  ngAfterViewChecked() {
+    console.log('ProductFormComponent View Checked');
   }
 
   getLookup() {
