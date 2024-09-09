@@ -1,3 +1,5 @@
+import { WritableSignal } from "@angular/core";
+
 export interface IProduct {
   id: string;
   name: string;
@@ -8,6 +10,6 @@ export interface IProduct {
 }
 
 export interface IProductFilters{
-  categoryId:string,
-  searchKey:string
+  categoryId:WritableSignal<string>,
+  searchKey:WritableSignal<string>
 }
